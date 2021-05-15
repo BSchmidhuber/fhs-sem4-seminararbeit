@@ -60,8 +60,6 @@
 \makeatother
 %%
 
-
-\usepackage{listings}
 \usepackage{color}
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
@@ -152,7 +150,9 @@
     \sectionfont{\fontsize{14}{15}\selectfont}
 \fi
 
-\ifmmtreviewversion\else
+\ifmmtreviewversion
+    \titlename
+\else
     \input{title}       
 \fi
 
@@ -173,7 +173,7 @@
 \fi
 
 
-\ifmmtpaper \else \ifmmtreviewversion\else  % paper does not need this stuff
+\ifmmtpaper \else  % paper does not need this stuff
     
     \newpage
     \selectlanguage{ngerman}
@@ -204,7 +204,7 @@
     \listoftables
     
 \fi
-\fi
+
 
 \mmtcolumnmode % switch back to column formatting of stylesheet
 
