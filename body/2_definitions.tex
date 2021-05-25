@@ -1,0 +1,45 @@
+\section{Definitions}
+
+
+
+\subsection{Clustering}
+
+When it comes to data analysis in the area of unsupervised machine learning, clustering is one of the most widely used techniques. For this purpose, data is analyzed so that groups with similar behavior can be identified and summarized. \autocite[]{VonLuxburg2007}
+
+\begin{quote}
+    ``Clustering is a fundamental unsupervised learning problem where one wants to partition a given data-set.``
+
+\autocite[1]{Bera2019}
+\end{quote}
+
+In machine learning, clustering is often used for feature generation and enhancement as well. It is thus important to consider the bias and unfairness issues when inspecting the quality of clusters.\autocite[]{Bera2019}
+The task of finding good clusters has been the focus of considerable research in machine learning and pattern recognition.\autocite[]{Ng2001}
+There are various clustering algorithms that we will look at below.
+
+
+\subsubsection{Spectral Clustering}
+
+% TODO WIKIPEDIA
+Spectral clustering is a cluster analysis method. The objects to be clustered are viewed as nodes of a graph. The distances or dissimilarities between the objects are represented by the weighted edges between the nodes of the graph.
+% TODO WIKIPEDIA END
+
+\begin{quote}
+Compared to the “traditional algorithms” such as k-means or single linkage, spectral clustering has many fundamental advantages. Results obtained by spectral clustering often outperform the traditional approaches, spectral clustering is very simple to implement and can be solved efficiently by standard linear algebra methods.
+
+\autocite[1]{VonLuxburg2007}
+\end{quote}
+
+
+\subsubsection{K-Means Clustering}
+
+The k-means algorithm is an incremental approach to clustering that dynamically adds one cluster
+center at a time through a deterministic global search procedure consisting of N (with N being the size of the data set) executions of the k-means algorithm from suitable initial positions.\autocite[]{Likas2003}
+
+
+
+\subsection{Fairness}
+Fairness in the field of machine learning is not easy to define. According to \textcite[]{Chierichetti2018} and \textcite[]{Kleindessner2019}, a clustering is fair if every demographic group is approximately proportionally represented in each cluster.
+
+% TODO WIKIPEDIA
+In machine learning, a given algorithm is said to be fair, or to have fairness, if its results are independent of given variables, especially those considered sensitive, such as the traits of individuals which should not correlate with the outcome (i.e. gender, ethnicity, sexual orientation, disability, etc.).
+% TODO WIKIPEDIA END
