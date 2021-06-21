@@ -2,27 +2,30 @@
 
 
 \subsection{Fairlets}
+\label{fairlets}
 
-At first glance, the fair version of a clustering problem appears harder than its vanilla counterpart. \autocite[5]{Chierichetti2018} But there is a simple solution to this. \textcite[5]{Chierichetti2018} prove a reduction from the former to the latter by first clustering the original points into small clusters preserving the balance, and then applying vanilla clustering on these smaller clusters instead of on the original points.
+The first concept presented in this paper is the concept of fairlets. The term "fairlet" was introduced by  \textcite[]{Chierichetti2018}, to denote "minimal sets that satisfy fair representation
+while approximately preserving the clustering objective." \autocite[1]{Chierichetti2018} 
 
-So they introduced the term "fairlet", to denote fair clusters with a minimal set "while approximately preserving the clustering objective". \autocite[]{Chierichetti2018}
+\textcite[]{Chierichetti2018} say, that fair clustering problems appear to be harder as the normal clustering problems without fairness constraints. They "prove a reduction from the former to the latter" and did this "by first clustering the original points into small clusters preserving the balance, and then applying vanilla clustering on these smaller clusters instead of on the original points." \autocite[5]{Chierichetti2018}
 
 
 \subsection{Stochastic Block Models}
-% TODO WIKIPEDIA
-The stochastic block model is a generative model for random graphs. This model tends to produce graphs containing communities, subsets characterized by being connected with one another with particular edge densities. For example, edges may be more common within communities than between communities. The stochastic block model is important in statistics, machine learning, and network science, where it serves as a useful benchmark for the task of recovering community structure in graph data.
-% TODO WIKIPEDIA END
 
-A stochastic model is proposed for social networks in which the actors in a network are partitioned into subgroups called blocks. The model provides a stochastic generalization of the blockmodel. \autocite[]{Holland1983}
+Stochastic Block Models were introduced and defined by \textcite[]{Holland1983}:
 
+\begin{quote}
+"A stochastic model is proposed for social networks in which the actors in a network are partitioned into subgroups called blocks. The model provides a stochastic generalization of the blockmodel."
 
-Other References: \textcite[]{Lei2013}
+\autocite[1]{Holland1983}
+\end{quote}
+
+\textcite[1]{Karrer2010StochasticNetworks} describe it as a "generative model for blocks, groups, or communities in networks." Classified as "random graph models" they already exist for a long time in the area of computer science.
+The simplest form of a stochastic blockmodel is that "each of $n$ vertices is assigned to one of $K$ blocks, groups, or communities, and undirected edges are placed independently between vertex pairs with probabilities that are a function only of the group memberships of the vertices." \autocite[1]{Karrer2010StochasticNetworks}
+
+In the case of clustering, \textcite[]{Lei2013} describe the consistency of spectral clustering in stochastic block models. They "show that, under mild conditions, spectral clustering applied to the adjacency matrix of the network can consistently recover hidden communities even when the order of the maximum expected degree is as small as log $n$, with $n$ the number of nodes." \autocite[1]{Lei2013}
+
 
 \subsection{Normalized Cut}
-Normalized Cut is an algorithm for image segmentation, which is mainly used in clustering algorithms, such as the spectral clustering.
-As \textcite[]{Eriksson2011} said, Indisputably Normalized Cuts is one of the most popular segmentation algorithms in computer vision.
 
-Other References: 
-\textcite[]{Xu2010},
-\textcite[]{Yu2004},
-\textcite[]{Shi2000}
+As a solution for segmenting graph data, \textcite[]{Shi2000} proposed normalized cuts, an "approach for solving the perceptual grouping problem in vision." \autocite[1]{Shi2000} This solution became famous in the area of unsupervised machine learning, as \textcite[]{Eriksson2011} said, "Indisputably Normalized Cuts is one of the most popular segmentation algorithms in computer vision. It has been applied to a wide range of segmentation tasks with great success." \autocite[1]{Eriksson2011}
