@@ -1,2 +1,12 @@
-\section{Summary}
-Conclusion
+\section{Summary and Conclusion}
+
+So you can see that depending on the use case, there are different advantages and disadvantages to which algorithm you should use. Of course, the actually available data set also plays a major role.
+
+Probably the simplest clustering algorithm is the $k$-means algorithm, which tries to keep the variance of the data points within a cluster as small as possible. However, since the algorithm must iterate over all data points, it is recommended that it not be used with extremely large data sets.
+If you prefer to work with the median instead of the mean to determine the distance between the data points, you can also use the $k$-median algorithm.
+
+The use of the $k$-center algorithm depends very individually on the given data set, or whether well-functioning center points can be found with it.
+
+Spectral clustering does a very good job of representing relatedness and representing specific shapes, such as intertwined spirals. So there again, depending on the available data set, it is key to decide whether spectral clustering is suitable for the particular use case.
+
+The corresponding fairness constraints are very strongly tied to the initial algorithms, which also makes it difficult to compare the different constraints. While $k$-center and $k$-means rely heavily on the concepts of fairlets and coresets, Spectral Clustering has a very simple and clear algorithm that remains very much the same in terms of flow by extending it with a fairness component.
