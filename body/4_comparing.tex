@@ -2,28 +2,28 @@
 \label{clustering-algorithms}
 
 
-\subsection{k-center}
+\subsection{$k$-center}
 \label{k-center}
 
 \subsubsection{General}
-The k-center clustering is a NP-hard problem. Because it is very likely that there never will be efficient algorithms to solve NP-hard problems, you need to resort to approximation algorithms.
+The $k$-center clustering is a NP-hard problem. Because it is very likely that there never will be efficient algorithms to solve NP-hard problems, you need to resort to approximation algorithms.
 For example, there is a greedy algorithm by \textcite[]{Gonzalez1985ClusteringDistance} which can solve our problems.
 
-This k-center algorithm consists of a parameter $k$, which defines the number of center points, and a set of center points $C$, where $c_{1},...,c_{k}$ are the so-called centers. \autocite[]{Kleindessner2019FairSummarization}
+This $k$-center algorithm consists of a parameter $k$, which defines the number of center points, and a set of center points $C$, where $c_{1},...,c_{k}$ are the so-called centers. \autocite[]{Kleindessner2019FairSummarization}
 The greedy strategy by \textcite[]{Gonzalez1985ClusteringDistance} picks an arbitrary element of the data set as the first center point $c_{1}$, calculates the distance for every point in the data set and picks the point with the highest distance as next center point $c_{2}$. This process will be continued until k center points are found.
 
 \subsubsection{Fairness}
 
 The fair variant of \textcite[]{Kleindessner2019FairSummarization} allows for the user to specify a subset $C_{0} \subseteq S$ that has to be included in the set of centers.
 
-\textcite[]{Chierichetti2018} uses the concept of \nameref{fairlets}. In his work, he has two different approaches for k-center: the $(1,1)$-fairlets and the $(1,t')$-fairlets.
+\textcite[]{Chierichetti2018} uses the concept of \nameref{fairlets}. In his work, he has two different approaches for $k$-center: the $(1,1)$-fairlets and the $(1,t')$-fairlets.
 
 The $(1,1)$ approach, that they also called "warmup", should be an example for a perfectly balanced clustering. \autocite[6]{Chierichetti2018}
 
 In the approach with the $(1,t')$-fairlets, they use a clustering with balance $t < 1$ instead, so it is assumed that $t = \frac{1}{t'}$, where $t'$ is an integer value $> 1$. \autocite[6]{Chierichetti2018}
 
 
-\subsection{k-means \& k-median}
+\subsection{$k$-means \& $k$-median}
 \label{k-means}
 \label{k-median}
 
@@ -31,7 +31,7 @@ In the approach with the $(1,t')$-fairlets, they use a clustering with balance $
 
 "The global $k$-means clustering algorithm" was introduced by \textcite[]{Likas2003}. They explain that their algorithm "is an incremental approach to clustering that dynamically adds one cluster center at a time through a deterministic global search procedure consisting of $N$ (with $N$ being the size of the data set) executions of the $k$-means algorithm from suitable initial positions." \autocite[1]{Likas2003}
 
-As \textcite[]{Jain1988} said, k-median is basically an extension for the k-means algorithm with the only difference, that it uses the median instead of the mean in each dimension.
+As \textcite[]{Jain1988} said, $k$-median is basically an extension for the $k$-means algorithm with the only difference, that it uses the median instead of the mean in each dimension.
 
 In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given "data set $X = \{x_{1},...,x_{N}\},x_{n} \in \mathbb{R}^d$". Then they try to partition "this data set into $M$ disjoint subsets (clusters) $C_{1},...,C_{M}$" to aim the so-called $M$-clustering problem, "such that a clustering criterion is optimized." They add,that "The most widely used clustering criterion is the sum of the squared Euclidean distances between each data point $x_{i}$ and the centroid $m_{k}$ (cluster center) of the subset $C_{k}$ which contains $x_{i}$. This criterion is called clustering error and depends on the cluster centers $m_{1},...,m_{M}$, [...] where $I(X) = 1$ if $X$ is true and $0$ otherwise.
 
@@ -39,7 +39,7 @@ In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given 
 
 \textcite[]{Chierichetti2018}, who had a look at the $k$-median clustering algorithm, have put forward the theorem that "the algorithm that first finds fairlets and then clusters them is a $(2 + \sqrt{3} + \epsilon)$-approximation for the (1, $k$)-fair median problem." This can be also modified for approximations like $(t' + 1 + \sqrt{3} + \epsilon)$ for the $(\frac{1}{t'}, k)$-fair median problem. \autocite[9]{Chierichetti2018}
 
-For the k-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get another solution, because they discovered that "previous algorithms for fair clustering do not scale well." So they came up with a solution of "coresets for fair clustering problems", especially for the $k$-means algorithm, where they are showing how to model and how to compute them. These coresets should be there to be able to drastically reduce the size of the input data. They have proven that these coresets can also be easily put together and they also show the possibility of computation in a streaming environment. \autocite[1]{Schmidt2018} 
+For the $k$-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get another solution, because they discovered that "previous algorithms for fair clustering do not scale well." So they came up with a solution of "coresets for fair clustering problems", especially for the $k$-means algorithm, where they are showing how to model and how to compute them. These coresets should be there to be able to drastically reduce the size of the input data. They have proven that these coresets can also be easily put together and they also show the possibility of computation in a streaming environment. \autocite[1]{Schmidt2018} 
 
 
 \subsection{Spectral Clustering}
@@ -50,7 +50,7 @@ For the k-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get ano
 When it comes to the spectral clustering method for cluster analysis, the work of \textcite[]{VonLuxburg2007}  "A Tutorial on Spectral Clustering" is a good place to start. It defines this method of clustering as follows:
 
 \begin{quote}
-"Compared to the “traditional algorithms” such as k-means or single linkage, spectral clustering has many fundamental advantages. Results obtained by spectral clustering often outperform the traditional approaches, spectral clustering is very simple to implement and can be solved efficiently by standard linear algebra methods."
+"Compared to the “traditional algorithms” such as $k$-means or single linkage, spectral clustering has many fundamental advantages. Results obtained by spectral clustering often outperform the traditional approaches, spectral clustering is very simple to implement and can be solved efficiently by standard linear algebra methods."
 
 \autocite[1]{VonLuxburg2007}
 \end{quote}
