@@ -7,7 +7,21 @@
 The first concept presented in this paper is the concept of fairlets. The term "fairlet" was introduced by  \textcite[]{Chierichetti2018}, to denote "minimal sets that satisfy fair representation
 while approximately preserving the clustering objective." \autocite[1]{Chierichetti2018} 
 
-\textcite[]{Chierichetti2018} say, that fair clustering problems appear to be harder as the normal clustering problems without fairness constraints. They "prove a reduction from the former to the latter" and did this "by first clustering the original points into small clusters preserving the balance, and then applying vanilla clustering on these smaller clusters instead of on the original points." \autocite[5]{Chierichetti2018}
+\subsubsection{Balance}
+
+To understand the concept of fairlets, it is first necessary to understand the concept of balance. Assuming we have a data set of red and blue data points, balance is the quotient of the smaller by the larger value, which must be between 0 and 1. If we have a completely balanced distribution of data points, e.g. 5 red and 5 blue points, the balance is 1, which means that the data set is perfectly balanced. If it is relatively unbalanced, e.g. 1 red data point and 10 blue, the balance is $\frac{1}{10}$ = 0.1. If we don't have any points at all from one color, the balance is 0, so fully unbalanced. This balance can also be combined in disjoint subsets by using the minimum balance of each case, which provides a basis for the concept of fairlets. \autocite[4]{Chierichetti2018}
+
+\begin{quote}
+"Balance encapsulates a specific notion of fairness, where a clustering with a monochromatic cluster (i.e., fully unbalanced) is considered unfair."
+
+\autocite[4]{Chierichetti2018}
+\end{quote}
+
+\subsubsection{Fairlet decomposition}
+
+Once the balance has been determined, a clustering can be constructed iteratively from the original data set. For that, single data points are removed as long as the balance between the remaining data points can be kept the same. To bring fairness into play, this process to get a minimum data set with the same balance is called fairlet decomposition, because the so-called ($t, k$)-fairlets are decomposed until you get $k$ desired clusters that have reached a corresponding balance of $t$. \autocite[4]{Chierichetti2018}
+
+Finally, \textcite[4]{Chierichetti2018} state that "balance encapsulates a specific notion of fairness, where a clustering with a monochromatic cluster (i.e., fully unbalanced) is considered unfair. So we call the clustering [...] a $(b, r)$\textit{-fairlet decomposition} [...] and call each cluster [...] \textit{a fairlet}." \autocite[4]{Chierichetti2018}
 
 
 \subsection{Stochastic Block Models}
