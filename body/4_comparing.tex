@@ -6,11 +6,11 @@
 \label{k-center}
 
 \subsubsection{General}
-The $k$-center clustering is a NP-hard problem. Because it is very likely that there never will be efficient algorithms to solve NP-hard problems, you need to resort to approximation algorithms.
-For example, there is a greedy algorithm by \textcite[]{Gonzalez1985ClusteringDistance} which can solve our problems.
+The $k$-center clustering is a problem that is categorized as "NP-hard" (= non-deterministic polynomial-time hard), which means that it is very likely that there never will be efficient algorithms to solve that problem. Therefore, you need to resort to approximation algorithms.
+For example, there is a "greedy algorithm" by \textcite[]{Gonzalez1985ClusteringDistance} which can solve our problems.
 
 This $k$-center algorithm consists of a parameter $k$, which defines the number of center points, and a set of center points $C$, where $c_{1},...,c_{k}$ are the so-called centers. \autocite[]{Kleindessner2019FairSummarization}
-The greedy strategy by \textcite[]{Gonzalez1985ClusteringDistance} picks an arbitrary element of the data set as the first center point $c_{1}$, calculates the distance for every point in the data set and picks the point with the highest distance as next center point $c_{2}$. This process will be continued until k center points are found.
+The greedy strategy by \textcite[]{Gonzalez1985ClusteringDistance} picks an arbitrary element of the data set as the first center point $c_{1}$, calculates the distance for every point in the data set and picks the point with the highest distance as next center point $c_{2}$. At the same time, the center points are optimized iteratively, so the points selected at the beginning are not immediately adopted as a fixed solution. This process of picking and optimizing will be continued until $k$ center points are found.
 
 \subsubsection{Fairness}
 

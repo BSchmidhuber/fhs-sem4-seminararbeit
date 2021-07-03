@@ -9,7 +9,7 @@ while approximately preserving the clustering objective." \autocite[1]{Chieriche
 
 \subsubsection{Balance}
 
-To understand the concept of fairlets, it is first necessary to understand the concept of balance. Assuming we have a data set of red and blue data points, balance is the quotient of the smaller by the larger value, which must be between 0 and 1. If we have a completely balanced distribution of data points, e.g. 5 red and 5 blue points, the balance is 1, which means that the data set is perfectly balanced. If it is relatively unbalanced, e.g. 1 red data point and 10 blue, the balance is $\frac{1}{10}$ = 0.1. If we don't have any points at all from one color, the balance is 0, so fully unbalanced. This balance can also be combined in disjoint subsets by using the minimum balance of each case, which provides a basis for the concept of fairlets. \autocite[4]{Chierichetti2018}
+To understand the concept of fairlets, it is first necessary to understand the concept of balance. Assuming we have a data set of red and blue data points, balance is the quotient of the smaller by the larger value, which must be between 0 and 1. If we have a completely balanced distribution of data points, e.g. 5 red and 5 blue points, the balance value is 1, which means that the data set is perfectly balanced. If it is relatively unbalanced, e.g. 1 red data point and 10 blue, the balance is $\frac{1}{10}$ = 0.1. If we don't have any points at all from one color, the balance is 0, so fully unbalanced. This balance can also be combined in disjoint subsets by using the minimum balance of each case, which provides a basis for the concept of fairlets. \autocite[4]{Chierichetti2018}
 
 \begin{quote}
 "Balance encapsulates a specific notion of fairness, where a clustering with a monochromatic cluster (i.e., fully unbalanced) is considered unfair."
@@ -26,7 +26,7 @@ Finally, \textcite[4]{Chierichetti2018} state that "balance encapsulates a speci
 
 \subsection{Stochastic Block Models}
 
-Stochastic Block Models were introduced and defined by \textcite[]{Holland1983}:
+The Stochastic Block Model, which is a creating model for random graphs, was originally introduced and defined by \textcite[]{Holland1983}:
 
 \begin{quote}
 "A stochastic model is proposed for social networks in which the actors in a network are partitioned into subgroups called blocks. The model provides a stochastic generalization of the blockmodel."
@@ -38,3 +38,5 @@ Stochastic Block Models were introduced and defined by \textcite[]{Holland1983}:
 The simplest form of a stochastic block model is that "each of $n$ vertices is assigned to one of $K$ blocks, groups, or communities, and undirected edges are placed independently between vertex pairs with probabilities that are a function only of the group memberships of the vertices." \autocite[1]{Karrer2010StochasticNetworks}
 
 In the case of clustering, \textcite[]{Lei2013} describe the consistency of spectral clustering in stochastic block models. They "show that, under mild conditions, spectral clustering applied to the adjacency matrix of the network can consistently recover hidden communities even when the order of the maximum expected degree is as small as log $n$, with $n$ the number of nodes." \autocite[1]{Lei2013}
+
+For application to fairness constraints, \textcite[4]{Kleindessner2019} created their own variant of the stochastic block model and performed an analysis on it, which we will look at in the \nameref{spectral-clustering} section.
