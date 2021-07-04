@@ -25,7 +25,7 @@ While the work of \textcite[]{Chierichetti2018} has been about fairness constrai
 
 Although there are many different clustering types, like density-based clustering or distribution-based clustering, we focus on one particular algorithm in this paper, which is the \nameref{spectral-clustering}.
 
-\textcite[]{Kleindessner2019} took a closer look at the fairness aspect of \nameref{spectral-clustering} and developed algorithms that use fairness constraints.
+\textcite[]{Kleindessner2019} took a closer look at the fairness aspect of \nameref{spectral-clustering} and developed an algorithm that uses fairness constraints.
 
 
 \subsection{Fairness}
@@ -34,7 +34,6 @@ To define fairness in the area of machine learning, \textcite[1]{Kleindessner201
 
 Based on an exemplary data set of 20 individuals, where 10 are female and 10 are male, an applied clustering should not distribute the clusters such that all females are in one cluster and all males are in the other cluster, because that would be highly unfair. Rather there should be approximately the same relative distribution of genders within the clusters. So, for example, if one forms 2 clusters, it would be optimally fair if there were 5 men and 5 women in each cluster. If, on the other hand, one forms 10 clusters, there is optimal fairness only if there is one female and one male in each of the clusters.
 
-In contrast, however, one must be careful that the application of fairness constraints does not lead to significantly worse qualitative results. Therefore, a good mixture must be found between good quality of data and relatively high fairness.
+In contrast, however, one must be careful that the application of fairness constraints does not lead to significantly worse qualitative results. Therefore, a good mixture must be found between good quality of data and relatively high fairness. The term that is used for this is "cost". This means that one does not want fairness at any price, but wants to keep the cost - i.e. the loss of quality in clustering - as low as possible.
 
-\textcite[1]{Feldman2014CertifyingImpact} raises the question of biased algorithms and claims that "unintentional bias" is called "disparate impact, which occurs when a selection process has widely different outcomes for different groups, even as it appears to be neutral." There is a problem of "determining disparate impact", especially "when computers are involved".
-
+Furthermore, \textcite[1]{Feldman2014CertifyingImpact} raise the question of biased algorithms and claim that "unintentional bias" is called "disparate impact, which occurs when a selection process has widely different outcomes for different groups, even as it appears to be neutral." There is a problem of "determining disparate impact", especially "when computers are involved". \autocite[1]{Feldman2014CertifyingImpact}

@@ -7,18 +7,18 @@
 
 \subsubsection{General}
 The $k$-center clustering is a problem that is categorized as "NP-hard" (= non-deterministic polynomial-time hard), which means that it is very likely that there never will be efficient algorithms to solve that problem. Therefore, you need to resort to approximation algorithms.
-For example, there is a "greedy algorithm" by \textcite[]{Gonzalez1985ClusteringDistance} which can solve our problems.
+For example, there is a "greedy algorithm" by \textcite[]{Gonzalez1985ClusteringDistance} which can solve the problem of NP-hardness.
 
 This $k$-center algorithm consists of a parameter $k$, which defines the number of center points, and a set of center points $C$, where $c_{1},...,c_{k}$ are the so-called centers. \autocite[]{Kleindessner2019FairSummarization}
 The greedy strategy by \textcite[]{Gonzalez1985ClusteringDistance} picks an arbitrary element of the data set as the first center point $c_{1}$, calculates the distance for every point in the data set and picks the point with the highest distance as next center point $c_{2}$. At the same time, the center points are optimized iteratively, so the points selected at the beginning are not immediately adopted as a fixed solution. This process of picking and optimizing will be continued until $k$ center points are found.
 
 \subsubsection{Fairness}
 
-\textcite[]{Chierichetti2018} use the concept of \nameref{fairlets} to achieve fairness. In their work, they have two different approaches for $k$-center: the $(1,1)$-fairlets and the $(1,t')$-fairlets.
+\textcite[]{Chierichetti2018} use the concept of \nameref{fairlets} to achieve fairness for $k$-center. In their work, they have two different approaches: the $(1,1)$-fairlets and the $(1,t')$-fairlets.
 
 To find a perfectly balanced clustering, \textcite[]{Chierichetti2018} show an example of a good $(1, 1)$-fairlet decomposition. They stated that "an optimal $(1, 1)$-fairlet decomposition for $k$-center can be found in polynomial time." \autocite[6]{Chierichetti2018} So they proved that they can remove the NP hardness of the algorithm in this case. The big disadvantage of this algorithm, however, is that this insistence on perfect balance or fairness makes the clustering itself correspondingly weaker.
 
-Therefore, it requires a smarter algorithm that brings relatively good fairness without pushing on the quality cost of the clustering. They show that in the approach with the $(1,t')$-fairlets, in which they use a clustering with balance $t < 1$ instead. So it is assumed that $t = \frac{1}{t'}$, where $t'$ is an integer value $> 1$. \autocite[6]{Chierichetti2018} With this small adjustment, they no longer assume perfect balance, which increases the strength of the algorithm because cost is also taken into account.
+Therefore, it requires a smarter algorithm that brings relatively good fairness without pushing too much on the quality cost of the clustering. \textcite[]{Chierichetti2018} show that in the approach with the $(1,t')$-fairlets, in which they use a clustering with balance $t < 1$ instead. So it is assumed that $t = \frac{1}{t'}$, where $t'$ is an integer value $> 1$. \autocite[6]{Chierichetti2018} With this small adjustment, they no longer assume perfect balance, which increases the strength of the algorithm because cost is also taken into account.
 
 
 \subsection{$k$-means}
@@ -28,7 +28,7 @@ Therefore, it requires a smarter algorithm that brings relatively good fairness 
 
 "The global $k$-means clustering algorithm" was introduced by \textcite[]{Likas2003}. They explain that their algorithm "is an incremental approach to clustering that dynamically adds one cluster center at a time through a deterministic global search procedure consisting of $N$ (with $N$ being the size of the data set) executions of the $k$-means algorithm from suitable initial positions." \autocite[1]{Likas2003}
 
-In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given "data set $X = \{x_{1},...,x_{N}\},x_{n} \in \mathbb{R}^d$". Then they try to partition "this data set into $M$ disjoint subsets (clusters) $C_{1},...,C_{M}$" to aim the so-called $M$-clustering problem, "such that a clustering criterion is optimized." They add, that "The most widely used clustering criterion is the sum of the squared Euclidean distances between each data point $x_{i}$ and the centroid $m_{k}$ (cluster center) of the subset $C_{k}$ which contains $x_{i}$. This criterion is called clustering error and depends on the cluster centers $m_{1},...,m_{M}$, [...] where $I(X) = 1$ if $X$ is true and $0$ otherwise.
+In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given "data set $X = \{x_{1},...,x_{N}\},x_{n} \in \mathbb{R}^d$". Then they try to partition "this data set into $M$ disjoint subsets (clusters) $C_{1},...,C_{M}$" to aim the so-called $M$-clustering problem, "such that a clustering criterion is optimized." They add, that "The most widely used clustering criterion is the sum of the squared Euclidean distances between each data point $x_{i}$ and the centroid $m_{k}$ (cluster center) of the subset $C_{k}$ which contains $x_{i}$. This criterion is called clustering error and depends on the cluster centers $m_{1},...,m_{M}$, [...] where $I(X) = 1$ if $X$ is true and $0$ otherwise."
 
 \subsubsection{Fairness}
 
@@ -41,7 +41,7 @@ In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given 
 
 \textcite[]{Chierichetti2018} have put forward the theorem that "the algorithm that first finds fairlets and then clusters them is a $(2 + \sqrt{3} + \epsilon)$-approximation for the (1, $k$)-fair median problem", which is equivalent to the $(1, 1)$-fairlets example at \nameref{k-center}. For the $(1,t')$-fairlets in the \nameref{k-center}, this can be also modified for approximations like $(t' + 1 + \sqrt{3} + \epsilon)$ for the $(\frac{1}{t'}, k)$-fair median problem. \autocite[9]{Chierichetti2018}
 
-For the basic $k$-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get another solution, because they discovered that "previous algorithms for fair clustering do not scale well." So they came up with a solution of "coresets for fair clustering problems", especially for the $k$-means algorithm, where they are showing how to model and how to compute them. These coresets should be there to be able to drastically reduce the size of the input data. They have proven that these coresets can also be easily put together and they also show the possibility of computation in a streaming environment. \autocite[1]{Schmidt2018} 
+For the basic $k$-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get another solution, because they discovered that "previous algorithms for fair clustering do not scale well." So they came up with a solution of "coresets for fair clustering problems", especially for the $k$-means algorithm, where they are showing how to model and how to compute them. These coresets behave similarly to fairlets and should be there to be able to drastically reduce the size of the input data. They have proven that these coresets can also be easily put together and they also show the possibility of computation in a streaming environment. \autocite[1]{Schmidt2018} 
 
 
 \subsection{Spectral Clustering}
@@ -56,7 +56,7 @@ When it comes to the spectral clustering method for cluster analysis, the work o
 \autocite[1]{VonLuxburg2007}
 \end{quote}
 
-Spectral clustering is based on so-called similarity graphs. These show similarities between different data points in an undirected graph $G = (V,E)$. The data is divided into groups: data points in the same group are similar, points in different groups are different. \autocite[2]{VonLuxburg2007}
+Spectral clustering is based on so-called similarity graphs. These show similarities between different data points in an undirected graph $G = (V,E)$. The data is divided into groups: data points in the same group are similar, points in diverse groups are different. \autocite[2]{VonLuxburg2007}
 
 As \textcite[2]{Kleindessner2019} summarize for creating an algorithm for unnormalized spectral clustering, a weighted adjacency matrix is calculated from the similarity graph, and subsequently the Laplacian matrix of it. Then the $k$ smallest eigenvalues of the Laplacian matrix and the corresponding orthonormal eigenvectors are computed. A $k$-means clustering is then applied to this.
 
