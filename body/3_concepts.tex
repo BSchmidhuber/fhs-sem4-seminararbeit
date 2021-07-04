@@ -5,7 +5,7 @@
 \label{fairlets}
 
 The first concept presented in this paper is the concept of fairlets. The term "fairlet" was introduced by  \textcite[]{Chierichetti2018}, to denote "minimal sets that satisfy fair representation
-while approximately preserving the clustering objective." \autocite[1]{Chierichetti2018}
+while approximately preserving the clustering objective." \autocite[1]{Chierichetti2018} This concept is essential for understanding fairness constraints in the \nameref{k-center} and \nameref{k-means} algorithms, which will cause us to address this topic in detail.
 
 \subsubsection{Balance}
 
@@ -13,7 +13,6 @@ To understand the concept of fairlets, it is first necessary to understand the c
 
 \begin{quote}
 "Balance encapsulates a specific notion of fairness, where a clustering with a monochromatic cluster (i.e., fully unbalanced) is considered unfair."
-
 \autocite[4]{Chierichetti2018}
 \end{quote}
 
@@ -26,11 +25,10 @@ Finally, \textcite[4]{Chierichetti2018} state that "balance encapsulates a speci
 
 \subsection{Stochastic Block Models}
 
-The Stochastic Block Model, which is a creating model for random graphs, was originally introduced and defined by \textcite[]{Holland1983}:
+The Stochastic Block Model concerns us only in \nameref{spectral-clustering}, of which \textcite{Kleindessner2019} have created a special variant. It is basically a generative model for random graphs and was originally introduced and defined by \textcite[]{Holland1983}:
 
 \begin{quote}
 "A stochastic model is proposed for social networks in which the actors in a network are partitioned into subgroups called blocks. The model provides a stochastic generalization of the blockmodel."
-
 \autocite[1]{Holland1983}
 \end{quote}
 
