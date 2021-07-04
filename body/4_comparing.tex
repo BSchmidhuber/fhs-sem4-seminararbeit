@@ -14,13 +14,11 @@ The greedy strategy by \textcite[]{Gonzalez1985ClusteringDistance} picks an arbi
 
 \subsubsection{Fairness}
 
-The fair variant of \textcite[]{Kleindessner2019FairSummarization} allows for the user to specify a subset $C_{0} \subseteq S$ that has to be included in the set of centers.
+\textcite[]{Chierichetti2018} use the concept of \nameref{fairlets} to achieve fairness. In their work, they have two different approaches for $k$-center: the $(1,1)$-fairlets and the $(1,t')$-fairlets.
 
-\textcite[]{Chierichetti2018} uses the concept of \nameref{fairlets}. In his work, he has two different approaches for $k$-center: the $(1,1)$-fairlets and the $(1,t')$-fairlets.
+To find a perfectly balanced clustering, \textcite[]{Chierichetti2018} show an example of a good $(1, 1)$-fairlet decomposition. They stated that "an optimal $(1, 1)$-fairlet decomposition for $k$-center can be found in polynomial time." \autocite[6]{Chierichetti2018} So they proved that they can remove the NP hardness of the algorithm in this case. The big disadvantage of this algorithm, however, is that this insistence on perfect balance or fairness makes the clustering itself correspondingly weaker.
 
-The $(1,1)$ approach, that they also called "warmup", should be an example for a perfectly balanced clustering. \autocite[6]{Chierichetti2018}
-
-In the approach with the $(1,t')$-fairlets, they use a clustering with balance $t < 1$ instead, so it is assumed that $t = \frac{1}{t'}$, where $t'$ is an integer value $> 1$. \autocite[6]{Chierichetti2018}
+Therefore, it requires a smarter algorithm that brings relatively good fairness without pushing on the quality cost of the clustering. They show that in the approach with the $(1,t')$-fairlets, in which they use a clustering with balance $t < 1$ instead. So it is assumed that $t = \frac{1}{t'}$, where $t'$ is an integer value $> 1$. \autocite[6]{Chierichetti2018} With this small adjustment, they no longer assume perfect balance, which increases the strength of the algorithm because cost is also taken into account.
 
 
 \subsection{$k$-means}
@@ -30,13 +28,20 @@ In the approach with the $(1,t')$-fairlets, they use a clustering with balance $
 
 "The global $k$-means clustering algorithm" was introduced by \textcite[]{Likas2003}. They explain that their algorithm "is an incremental approach to clustering that dynamically adds one cluster center at a time through a deterministic global search procedure consisting of $N$ (with $N$ being the size of the data set) executions of the $k$-means algorithm from suitable initial positions." \autocite[1]{Likas2003}
 
-In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given "data set $X = \{x_{1},...,x_{N}\},x_{n} \in \mathbb{R}^d$". Then they try to partition "this data set into $M$ disjoint subsets (clusters) $C_{1},...,C_{M}$" to aim the so-called $M$-clustering problem, "such that a clustering criterion is optimized." They add,that "The most widely used clustering criterion is the sum of the squared Euclidean distances between each data point $x_{i}$ and the centroid $m_{k}$ (cluster center) of the subset $C_{k}$ which contains $x_{i}$. This criterion is called clustering error and depends on the cluster centers $m_{1},...,m_{M}$, [...] where $I(X) = 1$ if $X$ is true and $0$ otherwise.
+In detail, \textcite[2]{Likas2003} explain the $k$-means algorithm with a given "data set $X = \{x_{1},...,x_{N}\},x_{n} \in \mathbb{R}^d$". Then they try to partition "this data set into $M$ disjoint subsets (clusters) $C_{1},...,C_{M}$" to aim the so-called $M$-clustering problem, "such that a clustering criterion is optimized." They add, that "The most widely used clustering criterion is the sum of the squared Euclidean distances between each data point $x_{i}$ and the centroid $m_{k}$ (cluster center) of the subset $C_{k}$ which contains $x_{i}$. This criterion is called clustering error and depends on the cluster centers $m_{1},...,m_{M}$, [...] where $I(X) = 1$ if $X$ is true and $0$ otherwise.
 
 \subsubsection{Fairness}
 
-\textcite[]{Chierichetti2018} had a look at the $k$-median clustering algorithm, which is basically an extension for the $k$-means algorithm with the only difference, that it uses the median instead of the mean in each dimension. \autocite[]{Jain1988} This small difference does not affect us further in our analysis. \textcite[]{Chierichetti2018} have put forward the theorem that "the algorithm that first finds fairlets and then clusters them is a $(2 + \sqrt{3} + \epsilon)$-approximation for the (1, $k$)-fair median problem." This can be also modified for approximations like $(t' + 1 + \sqrt{3} + \epsilon)$ for the $(\frac{1}{t'}, k)$-fair median problem. \autocite[9]{Chierichetti2018}
+\textcite[]{Chierichetti2018} had a look at the fairness approach for the $k$-median clustering algorithm, which is basically an extension for the $k$-means algorithm with the only difference, that it uses the median instead of the mean in each dimension. \autocite[]{Jain1988} This small difference does not affect us further in our analysis, especially since the results for $k$-center can in principle also be adopted for $k$-median or $k$-mean and only minor adjustments are necessary.
 
-For the $k$-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get another solution, because they discovered that "previous algorithms for fair clustering do not scale well." So they came up with a solution of "coresets for fair clustering problems", especially for the $k$-means algorithm, where they are showing how to model and how to compute them. These coresets should be there to be able to drastically reduce the size of the input data. They have proven that these coresets can also be easily put together and they also show the possibility of computation in a streaming environment. \autocite[1]{Schmidt2018} 
+\begin{quote}
+"Unlike, the $k$-center case, our goal is to find a perfect matching of minimum total cost, since that exactly represents the cost of the fairlet decomposition."
+\autocite[9]{Chierichetti2018}
+\end{quote}
+
+\textcite[]{Chierichetti2018} have put forward the theorem that "the algorithm that first finds fairlets and then clusters them is a $(2 + \sqrt{3} + \epsilon)$-approximation for the (1, $k$)-fair median problem", which is equivalent to the $(1, 1)$-fairlets example at \nameref{k-center}. For the $(1,t')$-fairlets in the \nameref{k-center}, this can be also modified for approximations like $(t' + 1 + \sqrt{3} + \epsilon)$ for the $(\frac{1}{t'}, k)$-fair median problem. \autocite[9]{Chierichetti2018}
+
+For the basic $k$-means clustering algorithm, \textcite[]{Schmidt2018} wanted to get another solution, because they discovered that "previous algorithms for fair clustering do not scale well." So they came up with a solution of "coresets for fair clustering problems", especially for the $k$-means algorithm, where they are showing how to model and how to compute them. These coresets should be there to be able to drastically reduce the size of the input data. They have proven that these coresets can also be easily put together and they also show the possibility of computation in a streaming environment. \autocite[1]{Schmidt2018} 
 
 
 \subsection{Spectral Clustering}
@@ -48,7 +53,6 @@ When it comes to the spectral clustering method for cluster analysis, the work o
 
 \begin{quote}
 "Compared to the “traditional algorithms” such as $k$-means or single linkage, spectral clustering has many fundamental advantages. Results obtained by spectral clustering often outperform the traditional approaches, spectral clustering is very simple to implement and can be solved efficiently by standard linear algebra methods."
-
 \autocite[1]{VonLuxburg2007}
 \end{quote}
 
@@ -60,7 +64,6 @@ While \textcite[]{Kleindessner2019} mainly deal with unnormalized spectral clust
 
 \begin{quote}
 "The success of spectral clustering is mainly based on the fact that it does not make strong assumptions on the form of the clusters. As opposed to $k$-means, where the resulting clusters form convex sets (or, to be precise, lie in disjoint convex sets of the underlying space), spectral clustering can solve very general problems like intertwined spirals."
-
 \autocite[28]{VonLuxburg2007}
 \end{quote}
 
@@ -70,13 +73,19 @@ In addition to the weighted adjacency matrix, the fair algorithm of \textcite[3]
 
 To be able to better demonstrate this, \textcite[4]{Kleindessner2019} showed a variant of the stochastic block model with 4 blocks of graph data (\ref{fig:kleindessner_variant_sbm}), where points in each group have different properties:
 \begin{enumerate}
-	\item both points in the same cluster and group.
-	\item both points not in the same cluster but in the same group
-	\item both points in the same cluster but not in the same group
-	\item both points neither in the same cluster, nor in the same group
+	\item points in the same cluster and group
+	\item points not in the same cluster but in the same group
+	\item points in the same cluster but not in the same group
+	\item points neither in the same cluster, nor in the same group
 \end{enumerate}
 
 When you look at \autoref{fig:kleindessner_variant_sbm}, you can see that the clustering $V = C_{1} \dot\cup C_{2}$ is fair, but the clustering $V = V_{1} \dot\cup V_{2}$ would be highly unfair. \autocite[4]{Kleindessner2019}
+
+But why is that? In total, we see here four separated groups of data points in the form of a graph. The red points representing a separate demographic group in the upper half, the blue points of another demographic group in the lower half. Edges between nodes occur very frequently between the top two groups and between the bottom two groups, only minimally fewer edges we can see between the left two groups and the right two groups. Diagonally, meaning between the top right and the bottom left or the top left and the bottom right, there are hardly any connections.
+
+Let us now assume that a clustering algorithm wants to split the given data points into two clusters. An algorithm without any fairness constraints would now presumably form the two clusters $V_{1}$ and $V_{2}$ drawn in, which however corresponds to an exact split between top and bottom, respectively the demographic groups. This is exactly the kind of split we would like to avoid.
+
+A much fairer separation would be to split the data points between left and right, since in these clusters the original ratios between the demographic groups could be maintained.
 
 \begin{figure}
     \centering
